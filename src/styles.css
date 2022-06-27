@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'material-icons/iconfont/material-icons.css';
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "Inter-Bold";
+  src: url("../src/fonts/Inter-Bold.ttf");
+}
+@font-face {
+  font-family: "Inter-ExtraLight";
+  src: url("../src/fonts/Inter-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "Inter-Light";
+  src: url("../src/fonts/Inter-Light.ttf");
+}
+@font-face {
+  font-family: "Inter-Regular";
+  src: url("../src/fonts/Inter-Regular.ttf");
+}
+@font-face {
+  font-family: "Inter-SemiBold";
+  src: url("../src/fonts/Inter-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Inter-Thin";
+  src: url("../src/fonts/Inter-Thin.ttf");
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

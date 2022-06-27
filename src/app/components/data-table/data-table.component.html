@@ -1,0 +1,241 @@
+<div *ngIf="loaderService.isLoading | async">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+<table
+  class="w-[98%] justify-center mt-4 ml-4 xl:w-[97%] lg:w-[95%] md:w-[93%] sm:w-[90%] xs:w-[80%]"
+>
+  <thead class="bg-[#f7f7f7] sm:hidden xs:hidden">
+    <tr class="border-y-2 border-gray-search h-16">
+      <td>
+        <div class="w-8 flex justify-center items-center md:w-4">
+          <input
+            (click)="selectAll()"
+            type="checkbox"
+            id="selectAll"
+            class="w-4 h-4 text-blueish-light bg-gray-light-button border-gray-light-button rounded md:w-3 md:h-3"
+          />
+        </div>
+      </td>
+      <td>
+        <app-table-head tableHeadText="Account"></app-table-head>
+      </td>
+      <td><app-table-head tableHeadText="Segment"></app-table-head></td>
+      <td><app-table-head tableHeadText="Type"></app-table-head></td>
+      <td><app-table-head tableHeadText="Model"></app-table-head></td>
+      <td><app-table-head tableHeadText="Active"></app-table-head></td>
+      <td><app-head-no-svg noSvgHeadText="eCommerce"></app-head-no-svg></td>
+      <td><app-head-no-svg noSvgHeadText="Trade"></app-head-no-svg></td>
+      <td><app-head-no-svg noSvgHeadText="Collection"></app-head-no-svg></td>
+      <td><app-table-head tableHeadText="Status"></app-table-head></td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody class="cursor-pointer sm:block xs:block">
+    <tr
+      class="h-16 items-center border-b-2 border-gray-search sm:block sm:h-auto sm:mb-[30px] sm:border-b-4 sm:border-gray-dark-button xs:block xs:h-auto xs:mb-[30px] xs:border-gray-dark-button xs:border-b-4"
+      *ngFor="
+        let item of items
+          | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };
+        let i = index
+      "
+      id="{{ item.id }}"
+      (click)="rowClicked($event)"
+    >
+      <td
+        class="sm:block sm:text-right sm:relative xs:block xs:text-right xs:relative"
+      >
+        <div
+          class="w-8 flex justify-center items-center md:w-4 sm:w-6 sm:mb-4 xs:w-6 xs:mb-4"
+        >
+          <input
+            type="checkbox"
+            id="checkbox"
+            (change)="onCheck()"
+            class="w-4 h-4 text-blueish-light bg-gray-light-button border-gray-light-button rounded md:w-3 md:h-3"
+          />
+        </div>
+      </td>
+      <td
+        class="sm:border-b-2 sm:border-gray-search sm:block sm:text-right sm:relative sm:before:content-['Account'] sm:before:mb-2 sm:before:mt-2 sm:before:font-iBold sm:before:text-[12px] sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Account'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <h3
+          class="pl-2 text-xs text-gray-light-text font-iRegular md:text-[10px] sm:mt-2 sm:mb-2 xs:mt-2 xs:mb-2"
+        >
+          {{ item.account }}
+        </h3>
+      </td>
+      <td
+        class="sm:border-b-2 sm:border-gray-search sm:block sm:text-right sm:relative sm:before:content-['Segment'] sm:before:mb-2 sm:before:mt-2 sm:before:font-iBold sm:before:text-[12px] sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Segment'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <h3
+          class="text-xs text-gray-light-text font-iRegular md:text-[10px] sm:mt-2 sm:mb-2 xs:mt-2 xs:mb-2"
+        >
+          {{ item.segment }}
+        </h3>
+      </td>
+      <td
+        class="sm:border-b-2 sm:border-gray-search sm:block sm:text-right sm:relative sm:before:content-['Type'] sm:before:mb-2 sm:before:mt-2 sm:before:font-iBold sm:before:text-[12px] sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Type'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <h3
+          class="text-xs text-gray-light-text font-iRegular md:text-[10px] sm:mt-2 sm:mb-2 xs:mt-2 xs:mb-2"
+        >
+          {{ item.type }}
+        </h3>
+      </td>
+      <td
+        class="sm:border-b-2 sm:border-gray-search sm:block sm:text-right sm:relative sm:before:content-['Model'] sm:before:mb-2 sm:before:mt-2 sm:before:font-iBold sm:before:text-[12px] sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Model'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <h3
+          class="text-xs text-gray-light-text font-iRegular md:text-[10px] sm:mt-2 sm:mb-2 xs:mt-2 xs:mb-2"
+        >
+          {{ item.model }}
+        </h3>
+      </td>
+      <td
+        class="sm:border-b-2 sm:border-gray-search sm:block sm:text-right sm:relative sm:before:content-['Active'] sm:before:mb-2 sm:before:mt-2 sm:before:font-iBold sm:before:text-[12px] sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Active'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <h3
+          class="text-xs text-gray-light-text font-iRegular md:text-[10px] sm:mt-2 sm:mb-2 xs:mt-2 xs:mb-2"
+        >
+          {{ item.active }}
+        </h3>
+      </td>
+      <td
+        class="sm:block sm:text-right sm:relative sm:before:content-['iCommerce'] sm:before:font-iBold sm:before:text-[12px] sm:before:mt-2 sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['iCommerce'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <div *ngIf="item.eCommerce; then trueValue; else falseValue"></div>
+      </td>
+      <td
+        class="sm:block sm:text-right sm:relative sm:before:content-['Trade'] sm:before:font-iBold sm:before:text-[12px] sm:before:mt-2 sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Trade'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <div *ngIf="item.trade; then trueValue; else falseValue"></div>
+      </td>
+      <td
+        class="sm:block sm:text-right sm:relative sm:before:content-['Collection'] sm:before:font-iBold sm:before:text-[12px] sm:before:mt-2 sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Collection'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <div *ngIf="item.collection; then trueValue; else falseValue"></div>
+      </td>
+      <td
+        class="sm:block sm:text-right sm:relative sm:before:content-['Status'] sm:before:font-iBold sm:before:text-[12px] sm:before:mt-2 sm:before:absolute sm:before:left-0 sm:before:w-[30%] sm:before:pl-[4px] sm:before:text-left xs:border-b-2 xs:border-gray-search xs:block xs:text-right xs:relative xs:before:content-['Status'] xs:before:mb-2 xs:before:mt-2 xs:before:font-iBold xs:before:text-[12px] xs:before:absolute xs:before:left-0 xs:before:w-[30%] xs:before:pl-[4px] xs:before:text-left"
+      >
+        <div>
+          <app-status-button [status]="item.status"></app-status-button>
+        </div>
+      </td>
+      <td class="sm:block sm:mb-2 xs:block xs:mb-2">
+        <div
+          class="flex justify-end pl-4 md:pl-0 sm:justify-center xs:justify-center"
+        >
+          <button>
+            <svg
+              class="h-6 w-6 text-gray-light-button md:h-5 md:w-5 sm:h-7 sm:w-7 xs:h-7 xs:w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="w-full flex justify-center items-center">
+  <pagination-template
+    #p="paginationApi"
+    (pageChange)="onTableDataChange($event)"
+    autoHide="true"
+    responsive="true"
+  >
+    <div class="flex flex-col justify-center items-center">
+      <div class="custom-pagination">
+        <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+          <span *ngIf="!p.isFirstPage()" (click)="p.previous()">
+            <- Previous
+          </span>
+        </div>
+        <div
+          class="page-number"
+          *ngFor="let page of p.pages"
+          [class.current]="p.getCurrent() === page.value"
+        >
+          <span
+            (click)="p.setCurrent(page.value)"
+            *ngIf="p.getCurrent() !== page.value"
+            >{{ page.label }}</span
+          >
+          <div *ngIf="p.getCurrent() === page.value">
+            <span>{{ page.label }}</span>
+          </div>
+        </div>
+        <div class="pagination-next" [class.disabled]="p.isLastPage()">
+          <span *ngIf="!p.isLastPage()" (click)="p.next()"> Next -> </span>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-[#a5a5a5] text-[12px] font-iRegular">
+          Selected
+          <span class="text-gray-dark-text font-iBold">{{
+            this.checkedItemCounter
+          }}</span>
+          out of
+          <span class="text-gray-dark-text font-iBold">{{
+            this.totalNumber
+          }}</span>
+          results
+        </h3>
+      </div>
+    </div>
+  </pagination-template>
+</div>
+<ng-template #trueValue>
+  <div
+    class="flex justify-center items-center sm:justify-end sm:items-end sm:mt-2 xs:justify-end xs:items-end xs:mt-2"
+  >
+    <svg
+      class="h-6 w-28 text-blueish-light md:h-5 md:w-5 sm:w-auto xs:w-auto"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  </div>
+</ng-template>
+
+<ng-template #falseValue>
+  <div
+    class="flex justify-center items-center sm:justify-end sm:items-end sm:mt-2 xs:justify-end xs:items-end xs:mt-2"
+  >
+    <svg
+      class="h-6 w-28 text-salmon md:h-5 md:w-5 sm:w-auto xs:w-auto"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  </div>
+</ng-template>
+<router-outlet></router-outlet>

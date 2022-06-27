@@ -1,0 +1,203 @@
+<div class="flex flex-row h-full w-full overflow-x-hidden">
+  <app-shop-sidebar></app-shop-sidebar>
+  <div class="w-full ml-16">
+    <app-header> </app-header>
+    <div class="mt-8 pl-4">
+      <app-title class="w-1/2" title="Shops"></app-title>
+    </div>
+    <div class="flex justify-center items-center w-[94%] h-[60%] ml-4 mt-8">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1352069.7368845374!2d-109.08471628097622!3d43.79837966896406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2zRWd5ZXPDvGx0IMOBbGxhbW9r!5e0!3m2!1shu!2shu!4v1655982222490!5m2!1shu!2shu"
+        class="h-full w-full rounded-lg"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <div class="pl-4 flex flex-row w-[95%] mt-8">
+      <h3
+        class="font-iBold tracking-tight text-xl text-grey-dark-texts mt-1 w-1/2"
+      >
+        List of shops & warehouses
+      </h3>
+      <div class="w-1/2 flex justify-end">
+        <svg
+          class="h-6 w-6 text-grey-dark-texts cursor-pointer"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div *ngIf="loaderService.isLoading | async">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <table class="ml-4 w-[94%] justify-center">
+      <tbody>
+        <tr
+          *ngFor="let det of detail"
+          class="h-16 border-b-2 border-gray-search xs:flex xs:flex-col xs:h-auto xs:my-4"
+        >
+          <td>
+            <div
+              class="flex flex-col items-center justify-center xs:items-start xs:justify-start xs:my-1"
+            >
+              <h3
+                class="font-iBold tracking-tight text-sm text-grey-dark-texts"
+              >
+                {{ det.Wnumber }}
+              </h3>
+              <h3
+                class="font-iELight tracking-tight text-sm text-gray-light-text mt-1"
+              >
+                Shop
+              </h3>
+            </div>
+          </td>
+          <td>
+            <div
+              class="flex flex-row items-center justify-center xs:items-start xs:justify-start xs:my-1"
+            >
+              <svg
+                class="h-5 w-5 text-gray-light-text"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="1"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <circle cx="12" cy="12" r="9" />
+                <line x1="12" y1="3" x2="12" y2="7" />
+                <line x1="12" y1="21" x2="12" y2="18" />
+                <line x1="3" y1="12" x2="7" y2="12" />
+                <line x1="21" y1="12" x2="18" y2="12" />
+                <line x1="12" y1="12" x2="12" y2="12.01" />
+              </svg>
+              <h3
+                class="font-iLight tracking-tight text-sm text-gray-light-text ml-1"
+              >
+                {{ det.Anumber }}
+              </h3>
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row items-center justify-start xs:my-1">
+              <svg
+                class="h-5 w-5 text-gray-light-text"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <h3
+                class="font-iLight tracking-tight text-sm text-gray-light-text ml-1"
+              >
+                {{ det.location }}
+              </h3>
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row sm:flex-col sm:items-center xs:my-1">
+              <img
+                [src]="det.picture"
+                alt=""
+                class="h-9 w-9 object-cover rounded-lg"
+              />
+
+              <div class="flex flex-col ml-2 sm:items-center sm:ml-0">
+                <h3
+                  class="font-iLight tracking-tight text-xs text-gray-light-text"
+                >
+                  {{ det.workerName }}
+                </h3>
+                <div class="flex flex-row mt-1 items-center">
+                  <svg
+                    class="h-5 w-5 text-gray-light-text"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <h3
+                    class="font-iLight tracking-tight text-[0.80rem] text-gray-light-text ml-1"
+                  >
+                    {{ det.workerPhoneNumber }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="flex flex-row justify-start items-center xs:my-1">
+              <svg
+                class="h-6 w-6 text-gray-light-text"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                />
+              </svg>
+              <h3
+                class="font-iLight tracking-tight text-xs text-gray-light-text ml-1"
+              >
+                {{ det.email }}
+              </h3>
+            </div>
+          </td>
+          <td>
+            <div class="flex justify-end xs:justify-start xs:my-1">
+              <svg
+                class="h-6 w-6 text-gray-light-text cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

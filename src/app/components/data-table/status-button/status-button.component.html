@@ -1,0 +1,59 @@
+<div class="w-28 h-[30px]" *ngIf="status; then Active; else Awaiting"></div>
+
+<ng-template #Active>
+  <div
+    class="flex justify-center items-center sm:justify-end sm:items-end sm:mt-2 xs:justify-end xs:items-end xs:mt-2"
+  >
+    <button
+      class="w-28 h-[30px] rounded-md bg-blueish-light flex flex-row justify-center items-center md:w-24 sm:w-20 sm:h-6 xs:w-20 xs:h-6"
+    >
+      <p
+        class="text-xs text-[#ffffff] font-iLight mr-2 md:text-[10px] sm:text-[10px] sm:mr-1 xs:text-[10px] xs:mr-1"
+      >
+        Approved
+      </p>
+      <svg
+        class="h-4 w-4 text-[#ffffff] md:h-3 md:w-3 sm:h-3 sm:w-3 xs:h-3 xs:w-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #Awaiting>
+  <div
+    class="flex justify-center items-center sm:justify-end sm:items-end sm:mt-2 xs:justify-end xs:items-end xs:mt-2"
+  >
+    <button
+      class="w-28 h-[30px] rounded-md bg-gray-dark-button flex flex-row justify-center items-center md:w-24 sm:w-20 sm:h-6 xs:w-20 xs:h-6"
+    >
+      <p
+        class="text-xs text-[#ffffff] font-iLight mr-2 md:text-[10px] sm:text-[10px] sm:mr-1 xs:text-[10px] xs:mr-1"
+      >
+        Awaiting
+      </p>
+      <svg
+        class="h-4 w-4 text-[#ffffff] md:h-3 md:w-3 sm:h-3 sm:w-3 xs:h-3 xs:w-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </button>
+  </div>
+</ng-template>

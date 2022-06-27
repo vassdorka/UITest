@@ -1,0 +1,65 @@
+<div class="pl-4 w-full pr-4 lg:pr-8 md:pr-10 sm:pr-12 xs:pr-14">
+  <div class="flex flex-row">
+    <div class="flex flex-col mt-8 w-1/2">
+      <h3 class="font-iLight tracking-tight text-sm text-grey-dark-texts">
+        Backoffice
+      </h3>
+      <app-title title="Accounts"></app-title>
+    </div>
+
+    <div class="flex flex-row w-1/2 justify-end mt-14">
+      <button
+        id="downloadButton"
+        class="flex h-9 w-9 border-2 border-gray-light-button rounded-lg mr-3 justify-center items-center xs:w-24 xs:mr-1"
+      >
+        <svg
+          class="h-5 w-5 text-gray-light-text xs:h-4 xs:w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+      </button>
+      <button
+        id="settingsButton"
+        class="flex h-9 w-9 border-2 border-gray-light-button rounded-lg mr-3 justify-center items-center xs:w-24 xs:mr-1 hover:bg-gray-search"
+      >
+        <svg
+          class="h-6 w-6 text-gray-light-text xs:h-5 xs:w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+      </button>
+      <app-action-button></app-action-button>
+    </div>
+  </div>
+
+  <div class="flex flex-row bg-[#f7f7f7] rounded-lg items-center py-4 mt-2">
+    <app-company-filter-button
+      class="flex flex-row"
+    ></app-company-filter-button>
+    <h3
+      class="text-[#278098] font-iSBold text-xs tracking-tight before:content-['+More'] sm:before:content-['+'] xs:before:content-['+'] cursor-pointer"
+    ></h3>
+  </div>
+</div>

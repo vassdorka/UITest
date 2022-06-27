@@ -1,0 +1,115 @@
+<button
+  class="flex flex-row justify-center items-center rounded-md mx-2 bg-gray-light-button h-8 w-auto sm:mx-1 xs:mx-1"
+>
+  <mat-label
+    class="text-gray-dark-text font-iSBold text-xs tracking-tight mr-3 ml-2 bg-gray-light-button xs:mr-1 xs:text-[10px]>Company</mat-label"
+    >Company</mat-label
+  >
+  <mat-select
+    [formControl]="datas"
+    multiple
+    (selectionChange)="onSelect($event)"
+    class="pr-2 text-xs"
+  >
+    <mat-select-trigger
+      class="text-gray-dark-text font-iRegular text-[11px] tracking-tight mr-[2px]"
+    >
+      <span
+        *ngIf="(datas.value?.length || 0) > 0"
+        class="example-additional-selection"
+      >
+        ({{ datas.value?.length || 0 }} item)
+      </span>
+    </mat-select-trigger>
+    <div id="searchDiv">
+      <mat-icon id="searchIcon" class="text-gray-light-text text-lg ml-3 mb-1"
+        >search</mat-icon
+      >
+      <mat-option id="searchOption" class="pl-0">
+        <lib-mat-select-search
+          [list]="items"
+          [searchProperties]="['account']"
+          (filtered)="items = $event"
+          [clearSearchInput]="true"
+          [fixOnTop]="true"
+          [isMultiSelect]="true"
+          [hasSelectAll]="true"
+          searchPlaceHolder="Search for Company"
+        >
+        </lib-mat-select-search
+      ></mat-option>
+    </div>
+    <mat-option
+      class="text-blueish-light font-iSBold text-[11px] tracking-tight xs:mr-1 xs:text-[10px]>"
+      >Select All</mat-option
+    >
+    <mat-option *ngFor="let item of items" [value]="item">
+      {{ item.account }}
+    </mat-option>
+  </mat-select>
+</button>
+
+<button
+  class="flex flex-row justify-center items-center rounded-md mx-2 bg-gray-light-button h-8 w-auto sm:mx-1 xs:mx-1"
+>
+  <mat-label
+    class="text-gray-dark-text font-iSBold text-xs tracking-tight ml-2 mr-3 bg-gray-light-button xs:mr-1 xs:text-[10px]"
+    >Registration Date</mat-label
+  >
+  <mat-select id="registry">
+    <div id="dateDiv">
+      <mat-option id="dateOption">
+        <mat-form-field appearance="outline" id="from">
+          <mat-label id="inputLabel" class="text-base text-gray-light-text"
+            >From</mat-label
+          >
+          <input matInput [matDatepicker]="from" [formControl]="date" />
+          <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+          <mat-datepicker #from></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="to">
+          <mat-label id="inputLabel" class="text-base text-gray-light-text"
+            >To</mat-label
+          >
+          <input matInput [matDatepicker]="to" [formControl]="date" />
+          <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+          <mat-datepicker #to></mat-datepicker>
+        </mat-form-field>
+      </mat-option>
+    </div>
+
+    <mat-label id="or">or</mat-label>
+
+    <mat-option *ngFor="let rdo of registryDateOptions"
+      ><mat-radio-group
+        id="radio"
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+      >
+        <mat-radio-button class="example-radio-button" [value]="rdo">
+          {{ rdo }}
+        </mat-radio-button>
+      </mat-radio-group></mat-option
+    >
+  </mat-select>
+</button>
+
+<button
+  class="flex flex-row justify-center items-center rounded-md mx-2 bg-gray-light-button h-8 w-auto sm:mx-1 xs:mx-1"
+>
+  <mat-label
+    class="text-gray-dark-text font-iSBold text-xs tracking-tight mr-3 ml-2 bg-gray-light-button xs:mr-1 xs:text-[10px]"
+    >Type</mat-label
+  >
+  <mat-select class="pr-2"></mat-select>
+</button>
+
+<button
+  class="flex flex-row justify-center items-center rounded-md mx-2 bg-gray-light-button h-8 w-auto sm:mx-1 xs:mx-1"
+>
+  <mat-label
+    class="text-gray-dark-text font-iSBold text-xs tracking-tight mr-3 ml-2 bg-gray-light-button xs:mr-1 xs:text-[10px]"
+    >Model</mat-label
+  >
+  <mat-select class="pr-2"></mat-select>
+</button>

@@ -1,0 +1,55 @@
+#searchDiv {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#registry {
+  font-size: 12px;
+  width: auto;
+}
+#dateDiv {
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#dateOption {
+  background-color: #ffffff !important;
+  height: 50px !important;
+  align-items: baseline;
+  margin-top: 20px;
+}
+
+#from {
+  width: 48%;
+  margin-right: 4%;
+
+}
+#to {
+  width: 48%;
+
+}
+#or {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a5a5a5;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
